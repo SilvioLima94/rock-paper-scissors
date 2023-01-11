@@ -1,2 +1,2 @@
-# rock-paper-scissors
-## Simple roc-paper-scissors game
+# Rock-Paper-Scissors
+### Simple roc-paper-scissors game using vanilla JS.
