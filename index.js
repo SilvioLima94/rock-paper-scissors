@@ -13,34 +13,40 @@ function playRound(playerSelection = "", computerSelection = "") {
   const userSelection = playerSelection.toLowerCase();
   const cpuSelection = computerSelection.toLowerCase();
 
-  let cpuScore = 0;
-  let userScore = 0;
-
   if (cpuSelection === "paper" && userSelection) {
-    cpuScore++;
-    console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
-    console.log("cpuScore: " + cpuScore);
-    return cpuScore;
+    // console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
+    return "You Lose! Paper beats Rock";
   } else if (cpuSelection === "scissors" && userSelection) {
-    userScore++;
-    console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
-    console.log("userScore: " + userScore);
-    return userScore;
+    // console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
+    return "You Won! Rock beats Scissors";
   } else {
     cpuSelection === userSelection;
     console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
     return "It's a tie";
   }
-  //   cpuScore > userScore
-  //     ? "The winner is " + cpuScore
-  //     : "The loser is " + userScore;
 }
 
 function game() {
+  let computerScore = 0;
+  let playerScore = 0;
   for (let i = 0; i < 5; i++) {
     playRound(playerSelection, computerSelection);
-    console.log(playerSelection, computerSelection);
+    console.log(i);
+    if (playerSelection && computerSelection === "Paper") {
+      computerScore++;
+      console.log("Computer: " + computerScore);
+    } else if (playerSelection && computerSelection === "Scissors") {
+      playerScore++;
+      console.log("User: " + playerScore);
+    } else {
+      computerSelection === playerSelection;
+      console.log(`cpu: ${computerSelection}, user: ${playerSelection}`);
+      return "It's a tie";
+    }
   }
+  return computerScore > playerScore
+    ? `The winner of all the rounds is COMPUTER!!! Score: ${computerScore} - 0`
+    : `The winner of all the rounds is USER!!! Score: ${playerScore} - 0`;
 }
 
 const playerSelection = "rock";
