@@ -6,8 +6,6 @@ function getComputerChoice() {
   return computerChoice[randomNum];
 }
 
-// console.log(getComputerChoice());
-
 // play a round of game
 function playRound(playerSelection = "", computerSelection = "") {
   const userSelection = playerSelection.toLowerCase();
@@ -29,15 +27,17 @@ function playRound(playerSelection = "", computerSelection = "") {
 function game() {
   let computerScore = 0;
   let playerScore = 0;
-  for (let i = 0; i < 5; i++) {
+
+  const getUserInput = parseInt(prompt("Enter number of rounds to play"));
+  for (let i = 0; i < getUserInput; i++) {
     playRound(playerSelection, computerSelection);
-    console.log(i);
+    // console.log(i);
     if (playerSelection && computerSelection === "Paper") {
       computerScore++;
-      console.log("Computer: " + computerScore);
+      console.log("Computer score: " + computerScore);
     } else if (playerSelection && computerSelection === "Scissors") {
       playerScore++;
-      console.log("User: " + playerScore);
+      console.log("User score: " + playerScore);
     } else {
       computerSelection === playerSelection;
       console.log(`cpu: ${computerSelection}, user: ${playerSelection}`);
@@ -51,5 +51,5 @@ function game() {
 
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));
 console.log(game());
