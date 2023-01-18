@@ -7,20 +7,19 @@ function getComputerChoice() {
 }
 
 // play a round of game
-function playRound(playerSelection = "", computerSelection = "") {
-  const userSelection = playerSelection.toLowerCase();
-  const cpuSelection = computerSelection.toLowerCase();
+function playRound(player = "", computer = "") {
+  const userSelection = player.toLowerCase();
+  const cpuSelection = computer.toLowerCase();
 
   if (cpuSelection === "paper" && userSelection) {
-    // console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
-    return "You Lose! Paper beats Rock";
+    //console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
+    console.log("You Lose! Paper beats Rock");
   } else if (cpuSelection === "scissors" && userSelection) {
-    // console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
-    return "You Won! Rock beats Scissors";
+    //console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
+    console.log("You Won! Rock beats Scissors");
   } else {
-    cpuSelection === userSelection;
-    console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
-    return "It's a tie";
+    //console.log(`cpu: ${cpuSelection}, user: ${userSelection}`);
+    console.log("It's a tie");
   }
 }
 
@@ -28,28 +27,39 @@ function game() {
   let computerScore = 0;
   let playerScore = 0;
 
-  const getUserInput = parseInt(prompt("Enter number of rounds to play"));
-  for (let i = 0; i < getUserInput; i++) {
+  //const getUserInput = parseInt(prompt("Enter number of rounds to play"));
+  for (let i = 0; i < 5; i++) {
     playRound(playerSelection, computerSelection);
-    // console.log(i);
-    if (playerSelection && computerSelection === "Paper") {
+    const user = playerSelection.toLowerCase();
+    const cpu = computerSelection.toLowerCase();
+    //console.log(i);
+    if (user && cpu === "paper") {
       computerScore++;
-      console.log("Computer score: " + computerScore);
-    } else if (playerSelection && computerSelection === "Scissors") {
+      //console.log("Computer score: " + computerScore);
+    } else if (user && cpu === "scissors") {
       playerScore++;
-      console.log("User score: " + playerScore);
+      //console.log("User score: " + playerScore);
     } else {
-      computerSelection === playerSelection;
-      console.log(`cpu: ${computerSelection}, user: ${playerSelection}`);
-      return "It's a tie";
+      //console.log(`cpu: ${cpu}, user: ${user}`);
+      console.log("It's a tie");
     }
   }
-  return computerScore > playerScore
-    ? `The winner of all the rounds is COMPUTER!!! Score: ${computerScore} - 0`
-    : `The winner of all the rounds is USER!!! Score: ${playerScore} - 0`;
+
+  if (computerScore > playerScore)
+    console.log(
+      `The winner of all the rounds is COMPUTER!!! Score: ${computerScore}`
+    );
+  else if (playerScore > computerScore)
+    console.log(
+      `The winner of all the rounds is USER!!! Score: ${playerScore}`
+    );
+  else {
+    return;
+  }
 }
 
-const playerSelection = "rock";
+const playerSelection = "Rock";
 const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-console.log(game());
+
+playRound(playerSelection, computerSelection);
+game();
